@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/pages/login.css';
+import { auth } from '../../firebase';
 
 function Login() {
 
@@ -9,14 +10,14 @@ function Login() {
     const [password, setPassword] = useState('');
     
     const signIn = e => {
-        // e.preventDefault();
-        // auth
-        //     .signInWithEmailAndPassword(email, password)
-        //     .then(auth => {
-        //         history('/')
-        //     })
-        //     .catch(error => alert(error.message))
-        console.log('hello world');
+        e.preventDefault();
+        auth
+            .signInWithEmailAndPassword(email, password)
+            .then(auth => {
+                history('/')
+            })
+            .catch(error => alert(error.message))
+
     }
 
     const register = e => {
@@ -46,13 +47,22 @@ function Login() {
                 <input className='form_control' type='text' autoCapitalize='none' autoComplete='off' autoCorrect='off'
                         spellCheck='false' placeholder='Email' aria-label='Email'
                         value={email} onChange={e => setEmail(e.target.value)}/>
-                <label for="name">Email</label>
+                <label htmlFor="name">Email</label>
             </div> 
             <div className="form-input">
                 <input className='form_control' type='password'autoCapitalize='none' autoComplete='off' autoCorrect='off'
                         spellCheck='false' placeholder='Enter your password' aria-label='Search' 
                 value={password} onChange={e => setPassword(e.target.value)}/>
-                <label for="name">Enter your password</label>
+                <label htmlFor="name">Enter your password</label>
+            </div>
+            <div className="recover__creds">
+                <a href='/'>Forgot password?</a>
+            </div>
+            <div className="cache_auth">
+                <label>
+                    <input type='checkbox' />
+                    <span>Keep me logged in for up to 30 days</span>
+                </label>
             </div>  
             <button className='login__signInButton'
             type='submit' onClick={signIn}>Sign in</button>
