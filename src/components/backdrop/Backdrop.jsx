@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './backdrop.css';
+import '../../styles/pages/backdrop.css';
 import Countdown from '../countdown/Countdown';
 import { initialLaunchCounter } from '../../constants/initDate';
 import Fireworks from '../fireworks/Fireworks';

@@ -1,5 +1,5 @@
 import React from 'react';
-import './firework.css';
+import '../../styles/pages/firework.css';
 
 function Fireworks() {
   return (

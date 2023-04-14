@@ -1,5 +1,5 @@
 import React from 'react';
-import './countdown.css';
+import '../../styles/pages/countdown.css';
 
 function Countdown({ value, duration_type }) {
   return (
