@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './backdrop.css';
 import Countdown from '../countdown/Countdown';
 import { initialLaunchCounter } from '../../constants/initDate';
+import Fireworks from '../fireworks/Fireworks';
 
 function Backdrop() {
 
@@ -20,16 +21,24 @@ function Backdrop() {
 
     const initTimeLeft = () => {
 
+        const terminalState = ((val) => val >= 0 ? val : 0)
         const countTime = new Date() - new Date(initialTime);
+        const timerDuration = (
+            initialLaunchCounter.Days * 1000 * 60 * 60 * 24
+            + initialLaunchCounter.Hours * 1000 * 60 * 60
+            + initialLaunchCounter.Minutes * 1000 * 60 
+            + initialLaunchCounter.Seconds * 1000
+        ) - countTime;
         return {
-          days: initialLaunchCounter.Days - Math.floor(countTime / (2000 * 60 * 60 * 24)),
-          hours: initialLaunchCounter.Hours - Math.floor((countTime / (1000 * 60 * 60)) % 24),
-          minutes: initialLaunchCounter.Minutes - Math.floor((countTime / 1000 / 60) % 60),
-          seconds: initialLaunchCounter.Seconds - Math.floor((countTime / 1000) % 60),
+          days: terminalState(Math.floor((timerDuration / (1000 * 60 * 60 * 24)))),
+          hours: terminalState(Math.floor((timerDuration / (1000 * 60 * 60)) % 24)),
+          minutes: terminalState(Math.floor((timerDuration / 1000 / 60) % 60)),
+          seconds: terminalState(Math.floor((timerDuration / 1000) % 60)),
         };
       };
     
       const [timeLeft, setTimeLeft] = useState(initTimeLeft());
+      const timerHasRunOut = Object.keys(timeLeft).reduce((acc, curr) => acc + timeLeft[curr], 0) ? false : true;
 
       useEffect(() => {
         storeTime();
@@ -47,18 +56,20 @@ function Backdrop() {
 
   return (
     <div className="countdown">
+
     <div className="countdown__stars">
+        {timerHasRunOut ? <h1>Grand Opening! Yay!</h1> :  <h1>we're launching soon</h1>}
     <div className="countdown__cards">
         {
-            Object.keys(timeLeft).map((key) => (
-                <Countdown value={timeLeft[key]} duration_type={key}/>
+            !timerHasRunOut &&
+            Object.keys(timeLeft).map((key, index) => (
+                <Countdown key={index} value={timeLeft[key]} duration_type={key}/>
             ))
         }
     </div>
     </div>
-    <div className="countdown__mtns">
-
-    </div>
+    <div className="countdown__mtns"></div>
+        {timerHasRunOut && <Fireworks />}
 </div>
   )
 }

@@ -9,20 +9,6 @@ body .card {
     color:#8486a9;
 }
 
-
-
-.card{
-    margin:0 1rem;
-}
-
-.card:first-child{
-    margin-left:0;
-}
-
-.card:last-child{
-    margin-right:0;
-}
-
 .card .number{
     display:block;
     position:relative;
@@ -61,13 +47,12 @@ body .card {
 .card .number .topNumber::before{
     content:"";
     position:absolute;
-    right:-0.5rem;
+    right: 96%;
     bottom:-0.5rem;
     background-color:#191a24;
     width:1rem;
     height:1rem;
     border-radius:1rem;
-    transform: translateX(-12.5rem);
 }
 
 .card .number .topNumber ::after{
