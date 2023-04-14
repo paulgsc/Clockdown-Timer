@@ -1,18 +1,4 @@
 
-body  {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(
-        180deg,
-        #191a24 20%,
-        #1e1f29 48%,
-        #2b212d 72%
-      );
-}
 .firework {
 	position: absolute;
 }

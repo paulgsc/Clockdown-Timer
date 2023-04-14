@@ -1,7 +1,7 @@
 
 export const initialLaunchCounter = {
-    "Days": 0,
-    "Hours": 16,
+    "Days": 1,
+    "Hours": 23,
     "Minutes": 59,
     "Seconds": 59
 };
