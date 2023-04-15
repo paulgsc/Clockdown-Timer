@@ -13,6 +13,12 @@ export const menubar = [
     },
     {
      id: 83,
+     'path': '/listings',
+     'className': 'menu-bar',
+     'title': "Trade",
+    },
+    {
+     id: 84,
      'path': '/',
      'className': 'menu-bar',
      'title': "Learn",
@@ -38,7 +44,7 @@ export const menubar = [
     },
  
     {
-     id: 84,
+     id: 85,
      'path': '/',
      'className': 'menu-bar',
      'title': "Individuals",

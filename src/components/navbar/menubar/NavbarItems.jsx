@@ -13,7 +13,7 @@ function NavbarItems() {
        
         <ul key={menu.id}>
           <li key={menu.id} >
-            <Link><span>{menu.title}</span></Link>
+            <Link to={menu.path}><span>{menu.title}</span></Link>
               {menu?.dropdown && <i className="fa fa-caret-down" aria-hidden="true" />}
             {menu?.dropdown && <MenuItems dropdown={menu.dropdown} />} 
           </li>
