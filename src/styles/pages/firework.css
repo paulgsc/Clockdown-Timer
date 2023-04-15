@@ -9,8 +9,8 @@
 	width: 4px;
 	height: 80px;
 	transform-origin: 50% 100%;
-	/* background-color: rgba(0,0,0,.2); */
 	overflow: hidden;
+
 }
 .explosion:nth-child(1) {
 	transform: rotate(0deg) translateY(-15px);
@@ -52,7 +52,7 @@
 .explosion::before {
 	content: '';
 	position: absolute;
-	left: 0;
+	left: 0%;
 	right: 0;
 	top: 100%;
 	height: 40px;

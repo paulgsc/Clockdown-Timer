@@ -4,19 +4,21 @@ import '../../styles/pages/login.css';
 import { auth } from '../../firebase';
 import LoginAlert from '../alerts/LoginAlert';
 
-function Login() {
-
-    const history = useNavigate();
+function Signup() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    
-    const signIn = e => {
+
+    const register = e => {
         e.preventDefault();
         auth
-            .signInWithEmailAndPassword(email, password)
-            .then(auth => {
-                history('/')
+            .createUserWithEmailAndPassword(email, password)
+            .then((auth) => {
+                console.log(auth)
+                if (auth)  {
+                    navigate('/')
+                }
             })
             .catch(error => {
 
@@ -41,52 +43,42 @@ function Login() {
 
     }
 
-
-
   return (
-    
     <div className='login'>
+
     <div className='login__container'>
-        <h1>Sign in</h1>
+        <h1>Sign Up</h1>
         <form noValidate>
             <div className="form-input email">
                 <input className='form_control' type='text' autoCapitalize='none' autoComplete='off' autoCorrect='off'
                         spellCheck='false' placeholder='Email' aria-label='Email'
-                        value={email} onChange={e => setEmail(e.target.value)} required/>
+                        value={email} onChange={e => setEmail(e.target.value)} required />
                 <label htmlFor="name">Email</label>
             </div> 
             <div className="form-input">
                 <input className='form_control' type='password'autoCapitalize='none' autoComplete='off' autoCorrect='off'
-                        spellCheck='false' placeholder='Enter your password' aria-label='Search' 
-                value={password} onChange={e => setPassword(e.target.value)} required/>
-                <label htmlFor="name">Enter your password</label>
+                        spellCheck='false' placeholder='Password (min. 6 characters)' aria-label='Search' minLength='6'
+                value={password} onChange={e => setPassword(e.target.value)}
+                required  />
+                <label htmlFor="name">Password (min. 6 characters)</label>
             </div>
-            <div className="recover__creds">
-                <a href='/'>Forgot password?</a>
-            </div>
-            <div className="cache_auth">
-                <label>
-                    <input type='checkbox' />
-                    <span>Keep me logged in for up to 30 days</span>
-                </label>
-            </div>
+            <button className='login__registerButton'  disabled={!(email && password.length >= 6)}
+                onClick={register}>Create a new Acount</button>
             {!!errorMessage.length && <LoginAlert erroMessage={errorMessage} />}
-            <button  id="signin-button" className='login__signInButton'
-            type='submit' onClick={signIn} disabled={!(email && password)}>Sign in</button>
         </form>
+
         <div className="sign_up">
-            <p>Don't have an account?
-                <span><Link to={'/signup'}>Sign Up</Link></span>
+            <p>Already have an account?
+                <span><Link to={'/login'}>Sign In</Link></span>
             </p>
         </div>
         <p>
             By signing-in you agree to {`<company name>`} Conditions of Use & Sale. 
             .... Enter Legal info ...
         </p>
-
     </div>
 </div>
   )
 }
 
-export default Login
+export default Signup

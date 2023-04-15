@@ -5,16 +5,18 @@ import Backdrop from './components/backdrop/Backdrop'
 import Fireworks from './components/fireworks/Fireworks';
 import Login from './components/auth/Login';
 import './App.css';
+import Signup from './components/auth/Signup';
+import Navbar from './components/navbar/Navbar';
 
 
 function App() {
   return (
     <Router>
-
       <Routes>
-
+        
         <Route path='/' element={
           <>
+            <Navbar />
             <Backdrop />
           </>
         }
@@ -22,6 +24,12 @@ function App() {
         <Route path='/login' element={
           <>
             <Login />
+          </>
+        }
+        />
+        <Route path='/signup' element={
+          <>
+            <Signup />
           </>
         }
         />
