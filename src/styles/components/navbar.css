@@ -294,3 +294,82 @@ button {
   line-height: 2.3em;
   text-transform: uppercase;
 }
+
+.profile-container {
+  position: relative;
+
+}
+
+.profile-container .profile-menu-container {
+  position: absolute;
+  background-color: #fff;
+  top: 50%;
+  right: 100%;
+  display: none;
+} 
+
+.profile-menu-container {
+  display: block;
+  min-height: max-content;
+  min-width: 12em;
+  outline: none;
+  box-sizing: border-box;
+  max-width: 20em;
+  max-height: 50em;
+  border-radius: .5em .5em .75em .75em;
+  border: 1px solid #606060;
+  margin: 0;
+  font-size: 1.6em;
+}
+
+
+.profile-menu-container a {
+  text-decoration: none;
+}
+
+
+
+.profile-menu-container ul li {
+  padding: 0.25em .5em .5em 0.15em;
+  display: block;
+  white-space: nowrap;
+  border-radius: 0;
+}
+
+
+
+.profile-user-info, .profile-quick-actions {
+  border-bottom: 1px solid #606060;
+}
+
+.menu-with-icon {
+  display: flex;
+  text-align: center;
+  justify-content: flex-start;
+  width: max-content;
+  min-height: max-content;
+  vertical-align: baseline;
+}
+
+.menu-icon {
+  padding-right: .45em;
+}
+
+
+.profile-menu-card ul {
+  padding: 0;
+  margin: 0;
+}
+
+.profile-menu-card li {
+  width: 95%;
+  padding: 0;
+  margin: 0;
+}
+
+
+.profile-menu-container li:hover {
+  background-color: grey;
+}
+
+

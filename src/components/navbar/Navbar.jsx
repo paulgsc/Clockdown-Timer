@@ -8,24 +8,21 @@ import Profile from '../profile/Profile';
 
 function Navbar() {
 
-  const [{ user }, dispatch] = useStateValue()
-  const [profileInitial, setProfileInitial] = useState('');
+  const initLetter = () => JSON.parse(localStorage.getItem('initial'))?.charAt(0) || '';
+  const [{ user }, dispatch]  = useStateValue();
+  const [profileInitial, setProfileInitial] = useState(initLetter());
 
   useEffect(() => {
-    try {
-      user.displayName ? setProfileInitial(user?.displayName[0]) : setProfileInitial(user?.email[0])
-    } catch (error) {
-      console.log('well what is going on!')
+    if (typeof initLetter === 'function') {
+      setProfileInitial(initLetter());
     }
-  }, [])
+  }, [user]);
 
   return (
     <div className='nav-container'>
         <NavbarLogo />
         <NavbarItems />
-        <div className="navbar-right-items">
-          { !!user ? <Profile user={profileInitial}/> : <NavbarLogins /> }
-        </div>
+        <div className="navbar-right-items">{ !!profileInitial ? <Profile user={profileInitial}/> : <NavbarLogins /> }</div>
     </div>
   )
 }

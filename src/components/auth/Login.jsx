@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/pages/login.css';
 import { auth } from '../../firebase';
 import LoginAlert from '../alerts/LoginAlert';
+import { Icons } from '../../constants/icons/icons';
 
 function Login() {
 
-    const history = useNavigate();
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -16,7 +17,7 @@ function Login() {
         auth
             .signInWithEmailAndPassword(email, password)
             .then(auth => {
-                history('/')
+                navigate('/')
             })
             .catch(error => {
 
@@ -41,11 +42,23 @@ function Login() {
 
     }
 
-
+    
 
   return (
-    
+    <div className="login-page-container">
+        <div className="icon-container"  >
+            <div className="back-icon-container" 
+              onClick={(e) => {e.preventDefault(); navigate(-1); }}
+            >
+                <Icons.chevronLeft className='go-back' />
+            <span>Back</span>
+            </div>
+            <div className="home"  >
+            <Link to={'/'}><Icons.faHome/></Link>
+            </div>
+        </div>
     <div className='login'>
+
     <div className='login__container'>
         <h1>Sign in</h1>
         <form noValidate>
@@ -85,6 +98,7 @@ function Login() {
         </p>
 
     </div>
+</div>
 </div>
   )
 }

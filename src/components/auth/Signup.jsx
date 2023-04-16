@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/pages/login.css';
 import { auth } from '../../firebase';
 import LoginAlert from '../alerts/LoginAlert';
+import { Icons } from '../../constants/icons/icons';
 
 function Signup() {
     const navigate = useNavigate();
@@ -44,6 +45,19 @@ function Signup() {
     }
 
   return (
+    
+    <div className="login-page-container">
+        <div className="icon-container"  >
+            <div className="back-icon-container" 
+              onClick={(e) => {e.preventDefault(); navigate(-1); }}
+            >
+                <Icons.chevronLeft className='go-back' />
+            <span>Back</span>
+            </div>
+            <div className="home"  >
+            <Link to={'/'}><Icons.faHome/></Link>
+            </div>
+        </div>
     <div className='login'>
 
     <div className='login__container'>
@@ -77,6 +91,7 @@ function Signup() {
             .... Enter Legal info ...
         </p>
     </div>
+</div>
 </div>
   )
 }

@@ -19,6 +19,7 @@ function App() {
   useEffect(() => {
     auth.onAuthStateChanged(authUser => {
       if(authUser){
+        console.log(authUser)
         dispatch({type: 'SET_USER', payload: {user: authUser} })
       }else {
         dispatch({type: 'SET_USER', payload: {user: null} })
@@ -30,25 +31,25 @@ function App() {
     <Router>
       <Routes>
         
-        <Route path='/' element={
+        <Route exact path='/' element={
           <>
             <Home />
           </>
         }
         />
-        <Route path='/listings' element={
+        <Route exact path='/listings' element={
           <>
             <Listings />
           </>
         }
         />
-        <Route path='/login' element={
+        <Route exact path='/login' element={
           <>
             <Login />
           </>
         }
         />
-        <Route path='/signup' element={
+        <Route exact path='/signup' element={
           <>
             <Signup />
           </>

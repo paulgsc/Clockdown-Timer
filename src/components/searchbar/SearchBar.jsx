@@ -14,7 +14,7 @@ function SearchBar() {
             </div>
         </form>
           <button id='search-icon-legacy' className='search__style-scope searchbox' aria-label='Search'>
-              <i class="fa-solid fa-magnifying-glass fa-lg tooltip" />
+              <i className="fa-solid fa-magnifying-glass fa-lg tooltip" />
           </button>
         </div>
     </div>
