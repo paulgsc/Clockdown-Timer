@@ -1,0 +1,17 @@
+
+.property-row-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+  
+  .property-row {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    margin: 0 1em;
+    padding: 0;
+  }
+  

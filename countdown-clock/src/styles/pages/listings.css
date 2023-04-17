@@ -1,0 +1,11 @@
+
+.listings-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.listings-property-container {
+    margin-top: 4em;
+    flex: 1;
+}

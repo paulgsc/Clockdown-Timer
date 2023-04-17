@@ -1,0 +1,21 @@
+
+
+.card-property {
+    display: block;
+    margin: 0 1em;
+    border: 0;
+    background: transparent;
+
+}
+
+.card-thumbnail {
+    width: 100%;
+    border-radius: 1em; /* this makes the border corners rounded */
+    overflow: hidden; /* this clips the image to the rounded border */
+}
+
+.card-thumbnail img {
+  width: 100%; /* make the image fill the container */
+  height: 100%; /* make the image fill the container */
+  object-fit: cover; /* this scales the image to fit inside the container */
+}
